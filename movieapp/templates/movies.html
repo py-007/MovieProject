@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All movies..</h1>
+    <ul>
+        {% for i in movies %}
+        <li>Released on : {{i.releasedate}}</li>
+        <li>Movie  : {{i.moviename}}</li>
+        <li>Actor  : {{i.actor}}</li>
+        <li>Actress  : {{i.actress}}</li>
+        <li>Ratings  : {{i.ratings}}</li>
+        <hr>
+        {% empty %}
+        <p>currently no movies are there</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
