@@ -18,3 +18,23 @@ def all_movies(request):
     movies = MovieModel.objects.all()
     return render(request,'movies.html',{'movies':movies})
 
+# DELETE
+def delete_view(request,id):
+    movie = MovieModel.objects.get(id=id)
+    if request.method == 'POST':
+        movie.delete()
+        return redirect("movies")
+    return render(request,'delete.html')
+
+# UPDATE
+def update_view(request,id):
+    movie = MovieModel.objects.get(id=id)
+    form = MovieForm(instance = movie)
+    if request.method == 'POST':
+        form = MovieForm(request.POST,instance=movie)
+        if form.is_valid():
+            form.save()
+            return redirect('movies')
+    return render(request,'update.html',{"form":form})
+
+

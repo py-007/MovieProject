@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <button><a href="{% url 'form' %}">Add movies</a></button>
     <h1>All movies..</h1>
     <ul>
         {% for i in movies %}
@@ -13,7 +14,9 @@
         <li>Movie  : {{i.moviename}}</li>
         <li>Actor  : {{i.actor}}</li>
         <li>Actress  : {{i.actress}}</li>
-        <li>Ratings  : {{i.ratings}}</li>
+        <li>Ratings  : {{i.rating}}</li>
+        <button><a href="{% url 'update' i.id %}">Update</a></button>
+        <button><a href="{% url 'delete' i.id %}">Delete</a></button>
         <hr>
         {% empty %}
         <p>currently no movies are there</p>
